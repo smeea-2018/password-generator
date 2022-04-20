@@ -16,12 +16,11 @@ if (passLengthInt >= 8 && passLengthInt <= 128) {
   alert("Please enter the value between 8 and 128");
 }
   
-  return 10;
 };
 
 const getPasswordCriteria = () => {
-  
-
+  // An array declared to store the criteria;
+let arr = [];
   
 };
 
