@@ -14,6 +14,7 @@ const getPasswordLength = () => {
     return passLengthInt;
   } else {
     alert("Please enter the value between 8 and 128");
+    return false;
   }
 };
 
@@ -54,19 +55,31 @@ const createRandomPassword = (pLength, criteria) => {
   while (count < pLength) {
     // Loop to traverse through the array of user selected criteria
     for (let j = 0; j < criteria.length; j += 1) {
+      if (count >= pLength) {
+        break;
+      } //  end of if
+
       // Generates random index of the array
       const index = Math.floor(Math.random() * criteria.length);
-      console.log(index);
+      console.log("randomly generated index " + index);
 
-      const strarr = criteria[index];
+      let strarr = criteria[index];
       // Generates random password
       passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
       count += 1;
+    } // for ends here. ended after break before
+    for (let j = 0; j < criteria.length; j += 1) {
       if (count >= pLength) {
         break;
       }
-    }
-  }
+
+      let strarr = criteria[j];
+      console.log("index " + j);
+      // Generates random password
+      passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
+      count += 1;
+    } //end for
+  } //End of while loop
   console.log(passwordi);
   return passwordi;
 };
@@ -76,6 +89,10 @@ const generatePassword = () => {
   // get the password length
   const passwordLength = getPasswordLength();
   console.log("password length is " + passwordLength);
+
+  if (passwordLength == "false") {
+    return;
+  }
 
   // get the password criteria
   const passwordCriteria = getPasswordCriteria();
