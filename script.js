@@ -6,6 +6,15 @@ const getPasswordLength = () => {
   let passLength = prompt(
   "Enter  length of the password between 8 and 128 characters "
 );
+
+console.log(passLength);
+const passLengthInt = parseInt(passLength);
+// Check if input meets the specified criteria
+if (passLengthInt >= 8 && passLengthInt <= 128) {
+  return passLengthInt;
+} else {
+  alert("Please enter the value between 8 and 128");
+}
   
   return 10;
 };
