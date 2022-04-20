@@ -27,6 +27,24 @@ console.log(c1);
 if (c1 == "y" || c1 == "Y") {
   arr.push("abcdefghijklmnopqrstuvwxyz");
 } else;
+
+let c2 = prompt("Do you want to enter lowercase");
+if (c2 == "y" || c1 == "Y") {
+  arr.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+} else;
+
+//let c3 = Prompt("Do you want to enter lowercase");
+if (c3 == "y" || c1 == "Y") {
+  arr.push("0123456789");
+} else;
+
+//let c4 = Prompt("Do you want to enter lowercase");
+if (c4 == "y" || c1 == "Y") {
+  arr.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+} else;
+
+return arr;
+
   
 };
 
