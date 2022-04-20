@@ -4,75 +4,71 @@ const generateBtn = document.querySelector("#generate");
 const getPasswordLength = () => {
   // User input for password length
   let passLength = prompt(
-  "Enter  length of the password between 8 and 128 characters "
-);
+    "Enter  length of the password between 8 and 128 characters "
+  );
 
-console.log(passLength);
-const passLengthInt = parseInt(passLength);
-// Check if input meets the specified criteria
-if (passLengthInt >= 8 && passLengthInt <= 128) {
-  return passLengthInt;
-} else {
-  alert("Please enter the value between 8 and 128");
-}
-  
+  console.log(passLength);
+  const passLengthInt = parseInt(passLength);
+  // Check if input meets the specified criteria
+  if (passLengthInt >= 8 && passLengthInt <= 128) {
+    return passLengthInt;
+  } else {
+    alert("Please enter the value between 8 and 128");
+  }
 };
 
 const getPasswordCriteria = () => {
   // An array declared to store the criteria;
-let arr = [];
-// user is presented with first question and result stored in array.
-let c1 = prompt("Do you want to enter lowercase");
-console.log(c1);
-if (c1 == "y" || c1 == "Y") {
-  arr.push("abcdefghijklmnopqrstuvwxyz");
-} else;
+  const arr = [];
+  // user is presented with first question and result stored in array.
+  let c1 = prompt("Do you want to enter lowercase");
+  console.log("Yo entered " + c1 + " for c1");
+  if (c1 == "y" || c1 == "Y") {
+    arr.push("abcdefghijklmnopqrstuvwxyz");
+  } else;
 
-let c2 = prompt("Do you want to enter lowercase");
-if (c2 == "y" || c1 == "Y") {
-  arr.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-} else;
+  const c2 = prompt("Do you want to enter uppercase");
+  console.log("Yo entered " + c2 + " for c2");
+  if (c2 == "y" || c1 == "Y") {
+    arr.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  } else;
 
-//let c3 = Prompt("Do you want to enter lowercase");
-if (c3 == "y" || c1 == "Y") {
-  arr.push("0123456789");
-} else;
+  const c3 = prompt("Do you want to enter a number");
+  console.log("Yo entered " + c3 + " for c3");
+  if (c3 == "y" || c1 == "Y") {
+    arr.push("0123456789");
+  } else;
 
-//let c4 = Prompt("Do you want to enter lowercase");
-if (c4 == "y" || c1 == "Y") {
-  arr.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
-} else;
+  const c4 = prompt("Do you want to enter special character");
+  console.log("Yo entered " + c4 + " for c4");
+  if (c4 == "y" || c1 == "Y") {
+    arr.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+  } else;
 
-return arr;
-
-  
+  return arr;
 };
 
 const createRandomPassword = (pLength, criteria) => {
+  let count = 0;
+  let passwordi = "";
+  while (count < pLength) {
+    // Loop to traverse through the array of user selected criteria
+    for (let j = 0; j < criteria.length; j += 1) {
+      // Generates random index of the array
+      const index = Math.floor(Math.random() * criteria.length);
+      console.log(index);
 
- let count = 0;
-let passwordi = "";
-while (count < pLength) {
-  // Loop to traverse through the array of user selected criteria 
-  for (let j = 0; j < criteria.length; j += 1) {
-    // Generates random index of the array
-    const index = Math.floor(Math.random() * criteria.length);
-    console.log(index);
-
-    const strarr = criteria[index];
-    // Generates random password
-    passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
-    count += 1;
-    if (count >= pLength) {
-      break;
+      const strarr = criteria[index];
+      // Generates random password
+      passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
+      count += 1;
+      if (count >= pLength) {
+        break;
+      }
     }
   }
-}
-console.log(passwordi);
-return passwordi;
-  }
- 
-  
+  console.log(passwordi);
+  return passwordi;
 };
 
 // main function to generate the random password
