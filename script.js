@@ -2,6 +2,10 @@
 const generateBtn = document.querySelector("#generate");
 
 const getPasswordLength = () => {
+  // User input for password length
+  let passLength = prompt(
+  "Enter  length of the password between 8 and 128 characters "
+);
   
   return 10;
 };
