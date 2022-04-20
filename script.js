@@ -49,7 +49,27 @@ return arr;
 };
 
 const createRandomPassword = (pLength, criteria) => {
- 
+
+ let count = 0;
+let passwordi = "";
+while (count < pLength) {
+  // Loop to traverse through the array of user selected criteria 
+  for (let j = 0; j < criteria.length; j += 1) {
+    // Generates random index of the array
+    const index = Math.floor(Math.random() * criteria.length);
+    console.log(index);
+
+    const strarr = criteria[index];
+    // Generates random password
+    passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
+    count += 1;
+    if (count >= pLength) {
+      break;
+    }
+  }
+}
+console.log(passwordi);
+return passwordi;
   }
  
   
