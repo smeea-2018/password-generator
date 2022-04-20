@@ -2,26 +2,28 @@
 const generateBtn = document.querySelector("#generate");
 
 const getPasswordLength = () => {
+  
   return 10;
 };
 
 const getPasswordCriteria = () => {
-  return [
-    "abcdefghijklmnopqrstuvwxyz",
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "0123456789",
-    " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
-  ];
+  
+
+  
 };
 
-const createRandomPassword = () => {
-  return "kdUE28(@d0";
+const createRandomPassword = (pLength, criteria) => {
+ 
+  }
+ 
+  
 };
 
 // main function to generate the random password
 const generatePassword = () => {
   // get the password length
   const passwordLength = getPasswordLength();
+  console.log("password length is " + passwordLength);
 
   // get the password criteria
   const passwordCriteria = getPasswordCriteria();
