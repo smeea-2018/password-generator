@@ -21,6 +21,12 @@ if (passLengthInt >= 8 && passLengthInt <= 128) {
 const getPasswordCriteria = () => {
   // An array declared to store the criteria;
 let arr = [];
+// user is presented with first question and result stored in array.
+let c1 = prompt("Do you want to enter lowercase");
+console.log(c1);
+if (c1 == "y" || c1 == "Y") {
+  arr.push("abcdefghijklmnopqrstuvwxyz");
+} else;
   
 };
 
