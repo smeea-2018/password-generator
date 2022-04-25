@@ -31,3 +31,15 @@ const getPasswordCriteria = () => {
   if (uppercaseCriteria) {
     arrCriteria.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   }
+  const numberCriteria = confirm("Do you want to enter a number");
+  if (numberCriteria) {
+    arrCriteria.push("0123456789");
+  }
+  const specialcharCriteria = confirm("Do you want to enter special character");
+
+  if (specialcharCriteria) {
+    arrCriteria.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+  }
+
+  return arrCriteria;
+};
