@@ -43,3 +43,23 @@ const getPasswordCriteria = () => {
 
   return arrCriteria;
 };
+const createRandomPassword = (passwordLength, passwordCriteria) => {
+  const passwordGenerated = [];
+  // Loop to traverse through the array of user selected criteria
+  for (let i = 0; i < passwordLength; i += 1) {
+    // Generates random index of the array
+    const index = Math.floor(Math.random() * passwordCriteria.length);
+
+    const criteriaStringArray = passwordCriteria[index];
+    // Generates random password
+    const randomCharacterIndex = Math.floor(
+      Math.random() * criteriaStringArray.length
+    );
+
+    const randomCharacter = criteriaStringArray.charAt(randomCharacterIndex);
+
+    passwordGenerated.push(randomCharacter);
+  } // for ends here
+
+  return passwordGenerated.join("");
+};
