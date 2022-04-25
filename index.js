@@ -17,3 +17,17 @@ const getPasswordLength = () => {
     document.getElementById("password").reset();
   }
 };
+const getPasswordCriteria = () => {
+  // An array declared to store the criteria;
+  const arrCriteria = [];
+  // user is presented with first question and result stored in array.
+  const lowercaseCriteria = confirm("Do you want to enter lowercase?");
+  if (lowercaseCriteria) {
+    arrCriteria.push("abcdefghijklmnopqrstuvwxyz");
+  }
+
+  const uppercaseCriteria = confirm("Do you want to enter uppercase");
+
+  if (uppercaseCriteria) {
+    arrCriteria.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  }
