@@ -3,96 +3,78 @@ const generateBtn = document.querySelector("#generate");
 
 const getPasswordLength = () => {
   // User input for password length
-  let passLength = prompt(
+  const passLength = prompt(
     "Enter  length of the password between 8 and 128 characters "
   );
 
-  console.log(passLength);
-  const passLengthInt = parseInt(passLength);
+  // console.log(passLength);
+  const passLengthInt = parseInt(passLength, 10);
   // Check if input meets the specified criteria
   if (passLengthInt >= 8 && passLengthInt <= 128) {
     return passLengthInt;
   } else {
     alert("Please enter the value between 8 and 128");
-    return false;
+    window.location.reload(true);
+    document.getElementById("password").reset();
   }
 };
 
 const getPasswordCriteria = () => {
   // An array declared to store the criteria;
-  const arr = [];
+  const arrCriteria = [];
   // user is presented with first question and result stored in array.
-  let c1 = prompt("Do you want to enter lowercase");
-  console.log("Yo entered " + c1 + " for c1");
-  if (c1 == "y" || c1 == "Y") {
-    arr.push("abcdefghijklmnopqrstuvwxyz");
-  } else;
+  const lowercaseCriteria = confirm(
+    "Do you want to enter lowercase? Please enter y or n."
+  );
+  if (lowercaseCriteria) {
+    arrCriteria.push("abcdefghijklmnopqrstuvwxyz");
+  }
 
-  const c2 = prompt("Do you want to enter uppercase");
-  console.log("Yo entered " + c2 + " for c2");
-  if (c2 == "y" || c1 == "Y") {
-    arr.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-  } else;
+  const uppercaseCriteria = confirm("Do you want to enter uppercase");
 
-  const c3 = prompt("Do you want to enter a number");
-  console.log("Yo entered " + c3 + " for c3");
-  if (c3 == "y" || c1 == "Y") {
-    arr.push("0123456789");
-  } else;
+  if (uppercaseCriteria) {
+    arrCriteria.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  }
 
-  const c4 = prompt("Do you want to enter special character");
-  console.log("Yo entered " + c4 + " for c4");
-  if (c4 == "y" || c1 == "Y") {
-    arr.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
-  } else;
+  const numberCriteria = confirm("Do you want to enter a number");
+  if (numberCriteria) {
+    arrCriteria.push("0123456789");
+  }
+  const specialcharCriteria = confirm("Do you want to enter special character");
 
-  return arr;
+  if (specialcharCriteria) {
+    arrCriteria.push(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+  }
+
+  return arrCriteria;
 };
 
-const createRandomPassword = (pLength, criteria) => {
-  let count = 0;
-  let passwordi = "";
-  while (count < pLength) {
-    // Loop to traverse through the array of user selected criteria
-    for (let j = 0; j < criteria.length; j += 1) {
-      if (count >= pLength) {
-        break;
-      } //  end of if
+const createRandomPassword = (passwordLength, passwordCriteria) => {
+  const passwordGenerated = [];
+  // Loop to traverse through the array of user selected criteria
+  for (let i = 0; i < passwordLength; i += 1) {
+    // Generates random index of the array
+    const index = Math.floor(Math.random() * passwordCriteria.length);
 
-      // Generates random index of the array
-      const index = Math.floor(Math.random() * criteria.length);
-      console.log("randomly generated index " + index);
+    const criteriaStringArray = passwordCriteria[index];
+    // Generates random password
+    const randomCharacterIndex = Math.floor(
+      Math.random() * criteriaStringArray.length
+    );
 
-      let strarr = criteria[index];
-      // Generates random password
-      passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
-      count += 1;
-    } // for ends here. ended after break before
-    for (let j = 0; j < criteria.length; j += 1) {
-      if (count >= pLength) {
-        break;
-      }
+    const randomCharacter = criteriaStringArray.charAt(randomCharacterIndex);
 
-      let strarr = criteria[j];
-      console.log("index " + j);
-      // Generates random password
-      passwordi += strarr.charAt(Math.floor(Math.random() * strarr.length));
-      count += 1;
-    } //end for
-  } //End of while loop
-  console.log(passwordi);
-  return passwordi;
+    passwordGenerated.push(randomCharacter);
+  } // for ends here
+
+  return passwordGenerated.join("");
 };
 
 // main function to generate the random password
 const generatePassword = () => {
   // get the password length
   const passwordLength = getPasswordLength();
-  console.log("password length is " + passwordLength);
-
-  if (passwordLength == "false") {
-    return;
-  }
+  // console.log("password length is " + passwordLength);
 
   // get the password criteria
   const passwordCriteria = getPasswordCriteria();
