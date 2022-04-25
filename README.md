@@ -2,7 +2,7 @@
 
 Generates a random password based on user's input using HTML, CSS and Java Script.
 
-Link to deploy website [here]()
+Link to deploy website [here](https://smeea-2018.github.io/password-generator/)
 
 ## Task
 
