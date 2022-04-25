@@ -23,9 +23,7 @@ const getPasswordCriteria = () => {
   // An array declared to store the criteria;
   const arrCriteria = [];
   // user is presented with first question and result stored in array.
-  const lowercaseCriteria = confirm(
-    "Do you want to enter lowercase? Please enter y or n."
-  );
+  const lowercaseCriteria = confirm("Do you want to enter lowercase?");
   if (lowercaseCriteria) {
     arrCriteria.push("abcdefghijklmnopqrstuvwxyz");
   }
@@ -74,7 +72,6 @@ const createRandomPassword = (passwordLength, passwordCriteria) => {
 const generatePassword = () => {
   // get the password length
   const passwordLength = getPasswordLength();
-  // console.log("password length is " + passwordLength);
 
   // get the password criteria
   const passwordCriteria = getPasswordCriteria();
