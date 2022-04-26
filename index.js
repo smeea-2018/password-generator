@@ -2,20 +2,15 @@ const generateBtn = document.querySelector("#generate");
 
 const getPasswordLength = () => {
   // User input for password length
-  const passLength = prompt(
+  const passwordLength = prompt(
     "Enter  length of the password between 8 and 128 characters "
   );
 
   // console.log(passLength);
-  const passLengthInt = parseInt(passLength, 10);
+  const passwordLengthInt = parseInt(passwordLength, 10);
   // Check if input meets the specified criteria
-  if (passLengthInt >= 8 && passLengthInt <= 128) {
-    return passLengthInt;
-  } else {
-    alert("Please enter the value between 8 and 128");
-    window.location.reload(true);
-    document.getElementById("password").reset();
-  }
+
+  return passwordLengthInt;
 };
 const getPasswordCriteria = () => {
   // An array declared to store the criteria;
@@ -66,14 +61,18 @@ const createRandomPassword = (passwordLength, passwordCriteria) => {
 const generatePassword = () => {
   // get the password length
   const passwordLength = getPasswordLength();
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    // get the password criteria
+    const passwordCriteria = getPasswordCriteria();
 
-  // get the password criteria
-  const passwordCriteria = getPasswordCriteria();
+    // create random password
+    const password = createRandomPassword(passwordLength, passwordCriteria);
 
-  // create random password
-  const password = createRandomPassword(passwordLength, passwordCriteria);
-
-  return password;
+    return password;
+  } else {
+    alert("Please enter the value between 8 and 128");
+    return "";
+  }
 };
 
 // Write password to the #password input
