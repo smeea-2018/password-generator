@@ -61,7 +61,7 @@ const createRandomPassword = (passwordLength, passwordCriteria) => {
     return passwordGenerated.join("");
   } else {
     alert("Please select at least one criteria");
-    return "Please refresh  webpage or click Generate Password button to create password";
+    return "Please  click Generate Password button to create password";
   }
 };
 const generatePassword = () => {
